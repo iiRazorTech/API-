@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <nav id="nav"></nav>
+    <div class="movie__search--container">
+      <label class="movie__search--label">Movie Title</label>
+      <form class="movie__search--form-row">
+        <input
+          type="text"
+          class="movie__search--input"
+          placeholder="Search Movies..."
+        />
+        <button type="submit" class="search_btn click" onclick="search()">Search</button>
+      </form>
+      <div id="movie__result">
+        <h3>Title:</h3>
+        <h3>Year:</h3>
+        <h3>Rated:</h3>
+        <h3>Released:</h3>
+        <figure>
+          ${Poster}
+        </figure>
+      </div>
+    </div>
+  </body>
+</html>
