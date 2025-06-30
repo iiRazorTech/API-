@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <nav id="nav"></nav>
     <div class="movie__search--container">
-      <label class="movie__search--label">Movie Title</label>
       <form class="movie__search--form-row">
+        <h1 class="movie__search--label">Search Movies</h1>
         <input
           type="text"
-          class="movie__search--input"
-          placeholder="Search Movies..."
+          class="movie-input"
+          placeholder="Search..."
+          onchange="searchChange(event)"
         />
-        <button type="submit" class="search_btn click" onclick="search()">Search</button>
+        <button type="submit" class="search_btn click">Search</button>
       </form>
-      <div id="movie__result">
-        <h3>Title:</h3>
-        <h3>Year:</h3>
-        <h3>Rated:</h3>
-        <h3>Released:</h3>
-        <figure>
-          ${Poster}
-        </figure>
+    </div>
+    <div class="movie__result--container-1">
+      <div class="movie__result--container-2">
+        <div class="movie__result">
+          <img class="movie__img" src="" alt="" />
+          <h2 class="movie__title"></h2>
+          <h3 class="movie__year"></h3>
+          <button type="submit" class="learn-more_btn click"></button>
+        </div>
       </div>
     </div>
   </body>
