@@ -6,28 +6,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="app.js" defer></script>
+    <script src="https://kit.fontawesome.com/23fcb8474c.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav id="nav"></nav>
+    <nav id="nav">
+      <h1 class="movie__label">
+        Movie:
+      </h1>
+    </nav>
     <div class="movie__search--container">
-      <form class="movie__search--form-row">
-        <h1 class="movie__search--label">Search Movies</h1>
+      <form class="movie__search--form-row" onsubmit="submitSearch(event)">
+        <h1 class="movie__search--label fade-in-left">Search Movies</h1>
         <input
           type="text"
-          class="movie-input"
+          class="movie-input fade-in-left"
           placeholder="Search..."
           onchange="searchChange(event)"
         />
-        <button type="submit" class="search_btn click">Search</button>
+        <button type="submit" class="search_btn click fade-in-right">Search</button>
+        <div class="sort__filter">
+          <select name="movieSort" class="fade-in-right" id="movie__sort" onchange="sortChange(event)">
+            <option disabled selected value="">Sort By Year</option>
+            <option value="newest">Newest to Oldest</option>
+            <option value="oldest">Oldest to Newest</option>
+          </select>
+        </div>
       </form>
     </div>
+    <div class="loading__state">
+        <i id="spinner"class="fa-solid fa-spinner"></i>
+        </div>
     <div id="movie__result--container">
-      <div class="movie__result">
-        <img class="movie__img" src="" alt="" />
-        <h2 class="movie__title"></h2>
-        <h3 class="movie__year"></h3>
-      </div>
+      <!-- JavaScript Injection Here -->
     </div>
   </body>
 </html>
-

@@ -15,12 +15,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.row {
-    display: flex;
-    justify-content: center;
-    padding: 0 90px;
-}
-
 .click {
   cursor: pointer;
   transition: all 300ms ease;
@@ -40,14 +34,28 @@ NAV
 
 */
 
+
+
 #nav {
-    background-image: url('Assets/nav__background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 450px;
+  position: relative;
+  background-image: url('Assets/nav__background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 450px;
 }
 
+.movie__label {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(90px); /* Adjust this value to align with "Any City" */
+  color: white;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: bold;
+  white-space: nowrap;
+}
 
 
 /* MOVIE SEARCH ENGINE  */
@@ -58,10 +66,24 @@ NAV
   padding: 20px;
 }
 
+.sort__filter {
+  margin-top: 4px;
+  padding-left: 24px;
+}
+
+#movie__sort {
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
 .movie__search--label {
   color: rgb(219, 35, 35);
   text-align: right;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .movie-input {
@@ -91,6 +113,8 @@ NAV
   align-items: center;
   margin: 0 auto;
 }
+
+/* Movie Reults */
 
 #movie__result--container {
   display: grid;
@@ -132,6 +156,63 @@ NAV
   margin-top: 12px;
 }
 
+/* Key Frames */
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform:rotate(0)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 0.8s  ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 0.8s  ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.loading__state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-spinner {
+  animation: spinner 750ms infinite linear;
+  font-size: 40px;
+  margin-top: 10px;
+  visibility: hidden;
+}
 
 
 

@@ -1,26 +1,68 @@
 const moviesWrapper = document.getElementById("movie__result--container");
+const spinner = document.getElementById("spinner")
+const searchName = document.querySelector(".movie__label");
+
+let currentMovies = [];
 
 function searchChange(event) {
-    renderMovies(event.target.value)
+  renderMovies(event.target.value);
+  searchName.innerHTML = `Movie: ${event.target.value}`;
 }
 
 async function renderMovies(searchTerm) {
-    const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=1fb66a7f`);
-    const data = await response.json();
-    const moviesArr = data.Search
-    moviesWrapper.innerHTML = moviesArr.slice(0,6).map((movie) => {
-        return `
+  spinner.style.visibility = "visible";
+  moviesWrapper.innerHTML = "";
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const response = await fetch(
+    `https://www.omdbapi.com/?s=${searchTerm}&apikey=1fb66a7f`
+  );
+
+  const data = await response.json();
+  currentMovies = data.Search;
+
+  spinner.style.visibility = "hidden"
+
+  displayMovies(currentMovies);
+}
+
+function displayMovies(movieList) {
+    moviesWrapper.innerHTML = movieList
+    .slice(0, 6)
+    .map((movie) => {
+      return `
         <div class="movie__result">
         <img class="movie__img" src="${movie.Poster}" alt="${movie.Title}">
         <h2 class="movie__title">${movie.Title}</h2>
         <h3 class="movie__year">${movie.Year}</h3>
         <button type="submit" class="learn-more_btn click">Learn More</button>
         </div>
-      `
-    }).join('');
+      `;
+    })
+    .join("");
 }
 
 
+function sortChange(event) {
+    const sortOption = event.target.value;
+    let sortedMovies = [...currentMovies]
 
+    if (sortOption === "newest") {
+        sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year))
+    } else if (sortOption === "oldest") {
+        sortedMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year))
+    }
 
+    displayMovies(sortedMovies);
+}
 
+function submitSearch(event) {
+  event.preventDefault();
+  const searchInput = document.querySelector(".movie-input");
+  const query = searchInput.value.trim();
+  if (query !== "") {
+    renderMovies(query);
+    searchName.innerHTML = `Movie: ${query}`;
+  }
+}
