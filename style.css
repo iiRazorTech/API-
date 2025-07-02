@@ -243,7 +243,46 @@ NAV
   visibility: hidden;
 }
 
+/* TABLETS  */
 
+@media (max-width: 768px) {
+  #nav {
+    display: none;
+  }
+  .movie__search--form-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search_btn,
+  .movie-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sort__filter {
+    padding-left: 60px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #movie__result--container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-height: 90vh;
+    padding: 16px;
+  }
+  .movie__label {
+    display: none;
+  }
+  .movie__search--label {
+    margin-right: 100px;
+  }
+}
 
 
 
