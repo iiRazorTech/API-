@@ -1,9 +1,9 @@
 const moviesWrapper = document.getElementById("movie__result--container");
 const spinner = document.getElementById("spinner");
-const searchName = document.querySelector(".movie__label");
 const modal = document.getElementById("movieModal");
 const modalBody = document.getElementById("modal-body");
 const closeModal = document.querySelector(".close");
+const searchName = document.querySelector(".movie__label");
 
 let currentMovies = [];
 
@@ -57,21 +57,21 @@ function displayMovies(movieList) {
     .join("");
 }
 
-async function getMovieDetails(imdbID) {
-  const response = await fetch(
-    `https://www.omdbapi.com/?i=${imdbID}&apikey=1fb66a7f`
-  );
-  const movie = await response.json();
-
-  alert(`
-Title: ${movie.Title}
-Year: ${movie.Year}
-Rated: ${movie.Rated}
-Released: ${movie.Released}
-Runtime: ${movie.Runtime}
-Genre: ${movie.Genre}
-Plot: ${movie.Plot}
-  `);
+function getMovieDetails(imdbID) {
+  fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=1fb66a7f`)
+    .then((res) => res.json())
+    .then((data) => {
+      modalBody.innerHTML = `
+        <h2>${data.Title} (${data.Year})</h2>
+        <img src="${data.Poster}" alt="${data.Title}" style="max-width: 100px; float: left; margin-right: 20px;">
+        <p><strong>Genre:</strong> ${data.Genre}</p>
+        <p><strong>Director:</strong> ${data.Director}</p>
+        <p><strong>Actors:</strong> ${data.Actors}</p>
+        <p><strong>Plot:</strong> ${data.Plot}</p>
+        <p><strong>IMDB Rating:</strong> ${data.imdbRating}</p>
+      `;
+      modal.style.display = "block";
+    });
 }
 
 function sortChange(event) {
@@ -97,19 +97,4 @@ function submitSearch(event) {
   }
 }
 
-function getMovieDetails(imdbID) {
-  fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=1fb66a7f`)
-    .then((res) => res.json())
-    .then((data) => {
-      modalBody.innerHTML = `
-        <h2>${data.Title} (${data.Year})</h2>
-        <img src="${data.Poster}" alt="${data.Title}" style="max-width: 100px; float: left; margin-right: 20px;">
-        <p><strong>Genre:</strong> ${data.Genre}</p>
-        <p><strong>Director:</strong> ${data.Director}</p>
-        <p><strong>Actors:</strong> ${data.Actors}</p>
-        <p><strong>Plot:</strong> ${data.Plot}</p>
-        <p><strong>IMDB Rating:</strong> ${data.imdbRating}</p>
-      `;
-      modal.style.display = "block";
-    });
-}
+
