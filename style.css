@@ -44,9 +44,6 @@ NAV
   height: 450px;
 }
 
-.movie__label {
-  white-space: nowrap;
-}
 
 
 /* MOVIE SEARCH ENGINE  */
@@ -75,7 +72,7 @@ NAV
   color: rgb(219, 35, 35);
   text-align: right;
   font-weight: 700;
-  margin-left: 250px;
+  margin-left: 100px;
 }
 
 .movie-input {
@@ -105,6 +102,11 @@ NAV
   margin: 0 auto;
 }
 
+.movie__label {
+  white-space: nowrap;
+}
+
+
 /* Movie Reults */
 
 #movie__result--container {
@@ -120,7 +122,6 @@ NAV
   display: flex;
   flex-direction: column;
   align-items: center; 
-  text-align: center;
 }
 
 .movie__img {
