@@ -37,7 +37,6 @@ NAV
 
 
 #nav {
-  position: relative;
   background-image: url('Assets/nav__background.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,14 +45,6 @@ NAV
 }
 
 .movie__label {
-  position: absolute;
-  bottom: 52px;
-  left: 50%;
-  transform: translateX(90px); /* Adjust this value to align with "Any City" */
-  color: white;
-  font-size: 28px;
-  font-style: italic;
-  font-weight: bold;
   white-space: nowrap;
 }
 
@@ -84,11 +75,11 @@ NAV
   color: rgb(219, 35, 35);
   text-align: right;
   font-weight: 700;
+  margin-left: 250px;
 }
 
 .movie-input {
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   padding: 8px;
   font-size: 16px;
   border: none;
@@ -156,6 +147,12 @@ NAV
   margin-top: 12px;
 }
 
+.loading__state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Key Frames */
 
 @keyframes fadeInRight {
@@ -199,12 +196,6 @@ NAV
   opacity: 0;
   animation: fadeInLeft 0.8s  ease-out forwards;
   animation-delay: 0.5s;
-}
-
-.loading__state {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .fa-spinner {

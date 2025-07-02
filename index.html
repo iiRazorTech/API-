@@ -9,19 +9,15 @@
     <script src="https://kit.fontawesome.com/23fcb8474c.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav id="nav">
-      <h1 class="movie__label">
-        Movie:
-      </h1>
-    </nav>
+    <nav id="nav"></nav>
     <div class="movie__search--container">
       <form class="movie__search--form-row" onsubmit="submitSearch(event)">
-        <h1 class="movie__search--label fade-in-left">Search Movies</h1>
+        <h2 class="movie__label fade-in-left">Search Results:</h2>
+        <h1 class="movie__search--label fade-in-left">Search</h1>
         <input
           type="text"
           class="movie-input fade-in-left"
           placeholder="Search..."
-          onchange="searchChange(event)"
         />
         <button type="submit" class="search_btn click fade-in-right">Search</button>
         <div class="sort__filter">

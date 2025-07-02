@@ -1,13 +1,8 @@
 const moviesWrapper = document.getElementById("movie__result--container");
-const spinner = document.getElementById("spinner")
+const spinner = document.getElementById("spinner");
 const searchName = document.querySelector(".movie__label");
 
 let currentMovies = [];
-
-function searchChange(event) {
-  renderMovies(event.target.value);
-  searchName.innerHTML = `Movie: ${event.target.value}`;
-}
 
 async function renderMovies(searchTerm) {
   spinner.style.visibility = "visible";
@@ -22,6 +17,8 @@ async function renderMovies(searchTerm) {
   const data = await response.json();
   currentMovies = data.Search;
 
+  
+  
   spinner.style.visibility = "hidden"
 
   displayMovies(currentMovies);
@@ -36,11 +33,26 @@ function displayMovies(movieList) {
         <img class="movie__img" src="${movie.Poster}" alt="${movie.Title}">
         <h2 class="movie__title">${movie.Title}</h2>
         <h3 class="movie__year">${movie.Year}</h3>
-        <button type="submit" class="learn-more_btn click">Learn More</button>
+        <button type="submit" class="learn-more_btn click" onclick="getMovieDetails('${movie.imdbID}')">Learn More</button>
         </div>
       `;
     })
     .join("");
+}
+
+async function getMovieDetails(imdbID) {
+  const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=1fb66a7f`);
+  const movie = await response.json();
+
+  alert(`
+Title: ${movie.Title}
+Year: ${movie.Year}
+Rated: ${movie.Rated}
+Released: ${movie.Released}
+Runtime: ${movie.Runtime}
+Genre: ${movie.Genre}
+Plot: ${movie.Plot}
+  `);
 }
 
 
@@ -63,6 +75,6 @@ function submitSearch(event) {
   const query = searchInput.value.trim();
   if (query !== "") {
     renderMovies(query);
-    searchName.innerHTML = `Movie: ${query}`;
+    searchName.innerHTML = `Search Result: ${query}`;
   }
 }
