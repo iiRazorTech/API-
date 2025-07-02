@@ -6,8 +6,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="app.js" defer></script>
-    <script src="https://kit.fontawesome.com/23fcb8474c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/23fcb8474c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
   <body>
     <nav id="nav"></nav>
     <div class="movie__search--container">
@@ -19,9 +28,16 @@
           class="movie-input fade-in-left"
           placeholder="Search..."
         />
-        <button type="submit" class="search_btn click fade-in-right">Search</button>
+        <button type="submit" class="search_btn click fade-in-right">
+          Search
+        </button>
         <div class="sort__filter">
-          <select name="movieSort" class="fade-in-right" id="movie__sort" onchange="sortChange(event)">
+          <select
+            name="movieSort"
+            class="fade-in-right"
+            id="movie__sort"
+            onchange="sortChange(event)"
+          >
             <option disabled selected value="">Sort By Year</option>
             <option value="newest">Newest to Oldest</option>
             <option value="oldest">Oldest to Newest</option>
@@ -30,8 +46,8 @@
       </form>
     </div>
     <div class="loading__state">
-        <i id="spinner"class="fa-solid fa-spinner"></i>
-        </div>
+      <i id="spinner" class="fa-solid fa-spinner"></i>
+    </div>
     <div id="movie__result--container">
       <!-- JavaScript Injection Here -->
     </div>
